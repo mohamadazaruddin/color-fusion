@@ -3,6 +3,7 @@ import {
   Flex,
   Heading,
   Button,
+  Image,
   FlexProps,
   Text,
   Grid,
@@ -51,10 +52,27 @@ export default function Features({ ...rest }: FlexProps) {
       px="20"
       py="100px"
       justify="center"
+      pos="relative"
       align="center"
       flexDir="column"
       {...rest}
     >
+      <Image
+        src="/images/balls.svg"
+        position="absolute"
+        top="-200px"
+        left={40}
+        zIndex={1}
+        transform="rotate(180deg)"
+      />
+      <Image
+        src="/images/balls.svg"
+        position="absolute"
+        top="700px"
+        right={100}
+        zIndex={1}
+        transform="rotate(180deg)"
+      />
       <PageTitle
         label={
           <>
@@ -67,6 +85,8 @@ export default function Features({ ...rest }: FlexProps) {
         templateColumns="repeat(3, 1fr)"
         w="75%"
         mt="14"
+        pos="relative"
+        zIndex={99}
         justifyContent="space-between"
         rowGap="10"
         columnGap="14"
