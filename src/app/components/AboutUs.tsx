@@ -7,24 +7,30 @@ import {
   Image,
   Heading,
   Text,
+  Link,
 } from "@chakra-ui/react";
 import React from "react";
 import PageTitle from "./PageTitle";
-import { EmailIcon } from "@chakra-ui/icons";
+import LinkedInIcon from "./Icons/LinkedInIcon";
+import EmailIcon from "./Icons/EmailIcon";
+import InstagramIcon from "./Icons/InstagramIcon";
 
 export default function AboutUs({ ...rest }: FlexProps) {
   const socialLinks = [
     {
-      icon: <EmailIcon />,
-      action: () => {},
+      icon: <LinkedInIcon />,
+      newtab: true,
+
+      action: "https://www.linkedin.com/in/mohamad-azaruddin-b8b880269",
     },
     {
       icon: <EmailIcon />,
-      action: () => {},
+      action: "mailto:azaruddin1307@gmail.com",
     },
     {
-      icon: <EmailIcon />,
-      action: () => {},
+      icon: <InstagramIcon />,
+      newtab: true,
+      action: "https://www.instagram.com/axharrr.ig",
     },
   ];
   return (
@@ -35,6 +41,7 @@ export default function AboutUs({ ...rest }: FlexProps) {
       align="center"
       flexDir="column"
       position="relative"
+      id="about-us-section"
       {...rest}
     >
       <Image
@@ -91,19 +98,24 @@ export default function AboutUs({ ...rest }: FlexProps) {
           </Box>
 
           <Flex gap={8} justify="center">
-            {socialLinks.map(({ icon, action }, i) => (
-              <Flex
+            {socialLinks.map(({ icon, action, newtab }, i) => (
+              <Link
                 key={`social-${i}`}
-                align="center"
-                justify="center"
-                h="40px"
-                w="40px"
-                rounded="base"
-                border="1px solid"
-                borderColor="brand.100"
+                href={action}
+                target={newtab ? "_blank" : ""}
               >
-                {icon}
-              </Flex>
+                <Flex
+                  align="center"
+                  justify="center"
+                  h="40px"
+                  w="40px"
+                  rounded="base"
+                  border="1px solid"
+                  borderColor="brand.100"
+                >
+                  {icon}
+                </Flex>
+              </Link>
             ))}
           </Flex>
         </Box>

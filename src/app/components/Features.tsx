@@ -1,4 +1,3 @@
-import { MoonIcon } from "@chakra-ui/icons";
 import {
   Flex,
   Heading,
@@ -13,35 +12,47 @@ import {
 import React from "react";
 import CustomCursor from "./CustomCursor";
 import PageTitle from "./PageTitle";
+import AssecibleIcon from "./Icons/AssecibleIcon";
+import ThemeIcon from "./Icons/ThemeIcon";
+import CompossableIcon from "./Icons/CompossableIcon";
+import CommunityIcon from "./Icons/CommunityIcon";
+import ThunderIcon from "./Icons/ThunderIcon";
+import { MoonIcon } from "@chakra-ui/icons";
 
 export default function Features({ ...rest }: FlexProps) {
   const featDetails = [
     {
+      icon: <AssecibleIcon w="5" h="5" />,
       title: "Accessible",
       description:
-        "Chakra UI strictly follows WAI-ARIA standards for all components.",
+        "Color fusion offers a range of customization options to personalize their experience.",
     },
     {
+      icon: <ThemeIcon w="5" h="5" />,
       title: "Themeable",
       description:
         "Customize any part of our components to match your design needs.",
     },
     {
+      icon: <CompossableIcon w="5" h="5" />,
       title: "Composable",
       description:
         "Designed with composition in mind. Compose new components with ease.",
     },
     {
+      icon: <CommunityIcon w="5" h="5" />,
       title: "Active Community",
       description:
         "We're a team of active maintainers ready to help you whenever you need.",
     },
     {
+      icon: <ThunderIcon w="5" h="5" />,
       title: "Experience",
       description:
         "Guaranteed to boost your productivity when building your app or website.",
     },
     {
+      icon: <MoonIcon w="5" h="5" color="contrast.200" />,
       title: "Light and Dark UI",
       description:
         "Chakra UI strictly follows WAI-ARIA standards for all components.",
@@ -91,7 +102,7 @@ export default function Features({ ...rest }: FlexProps) {
         rowGap="10"
         columnGap="14"
       >
-        {featDetails.map(({ title, description }, i) => (
+        {featDetails.map(({ title, description, icon }, i) => (
           <GridItem
             key={`feat-${i}`}
             w="auto"
@@ -108,7 +119,7 @@ export default function Features({ ...rest }: FlexProps) {
               bg="brand.900"
               rounded="full"
             >
-              <MoonIcon color="contrast.200" />
+              {icon}
             </Flex>
             <Heading
               color="brand.900"

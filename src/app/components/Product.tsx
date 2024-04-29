@@ -95,27 +95,42 @@ export default function Product({ ...rest }: FlexProps) {
             </Box>
           ))}
         </Box>
-        <Box w="50%" h="350px">
-          <Button
-            onClick={() => {
-              if (first < 3) {
-                setFirst(first + 1);
-              }
+        <Flex
+          w="50%"
+          h="350px"
+          bgImage={first === 0 ? "/images/appDesign.png" : "/images/bg.png"}
+          bgSize="cover"
+          bgPos="center"
+        >
+          <Box
+            w="25%"
+            h="full"
+            onMouseEnter={() => {
+              setFirst(0);
             }}
-          >
-            change
-          </Button>
-          <Button
-            onClick={() => {
-              if (first > 0) {
-                setFirst(first - 1);
-              }
+          ></Box>
+          <Box
+            w="25%"
+            h="full"
+            onMouseEnter={() => {
+              setFirst(1);
             }}
-          >
-            change
-          </Button>
-          image
-        </Box>
+          ></Box>
+          <Box
+            w="25%"
+            h="full"
+            onMouseEnter={() => {
+              setFirst(2);
+            }}
+          ></Box>
+          <Box
+            w="25%"
+            h="full"
+            onMouseEnter={() => {
+              setFirst(3);
+            }}
+          ></Box>
+        </Flex>
       </Flex>
     </Flex>
   );

@@ -1,12 +1,20 @@
 import { Box, Button, Flex, Link, Image, FlexProps } from "@chakra-ui/react";
+import { access } from "fs";
+import { useRouter } from "next/navigation";
 import React from "react";
 
 export default function Header({ ...rest }: FlexProps) {
+  const { push } = useRouter();
   const navitem = [
-    { text: "Tools" },
-    { text: "About Us" },
-    { text: "Contact Us" },
+    {
+      text: "Playground",
+      action: "/playground",
+    },
+
+    { text: "Gradients", action: "/gradientGenerator" },
+    { text: "Colors", action: "/palette" },
   ];
+
   return (
     <Flex
       px="20"
@@ -21,12 +29,17 @@ export default function Header({ ...rest }: FlexProps) {
       borderColor="brand.100"
       {...rest}
     >
-      <Box>
+      <Box onClick={() => push("/")} cursor="pointer">
         <Image src="/images/logo.png" h="30px" />
       </Box>
       <Flex gap={7} justify="center">
-        {navitem.map(({ text }, i) => (
+        {navitem.map(({ text, action }, i) => (
           <Link
+            _hover={{ bg: "brand.900", color: "#fff" }}
+            rounded="full"
+            href={action}
+            px="2"
+            py="1"
             key={`nav-${i}`}
             color="brand.900"
             fontWeight="medium"
