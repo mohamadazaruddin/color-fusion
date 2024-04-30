@@ -1,10 +1,12 @@
 import { Box, Button, Flex, Link, Image, FlexProps } from "@chakra-ui/react";
 import { access } from "fs";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import React from "react";
 
 export default function Header({ ...rest }: FlexProps) {
   const { push } = useRouter();
+  const asPath = usePathname();
+
   const navitem = [
     {
       text: "Playground",
@@ -40,8 +42,9 @@ export default function Header({ ...rest }: FlexProps) {
             href={action}
             px="2"
             py="1"
+            bg={asPath.includes(action) ? "brand.900" : ""}
             key={`nav-${i}`}
-            color="brand.900"
+            color={asPath.includes(action) ? "contrast.200" : "brand.900"}
             fontWeight="medium"
             fontSize="md"
           >

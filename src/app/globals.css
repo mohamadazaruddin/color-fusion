@@ -151,6 +151,24 @@ a {
     opacity 0.2s ease-in-out;
 }
 
+input[type="color"] {
+  width: 22px;
+  /* Set the width of the color picker */
+  height: 25px;
+  /* Set the height of the color picker */
+  border: none;
+  /* Remove the border */
+  border-radius: 8px !important;
+  /* Make the input a circle */
+  padding: 0;
+
+  /* Remove any padding */
+  appearance: none;
+  /* Remove the default appearance */
+  cursor: pointer;
+  /* Set cursor to pointer when hovering over the color picker */
+}
+
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
