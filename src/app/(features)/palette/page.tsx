@@ -19,7 +19,7 @@ export default function Palette() {
   useEffect(() => {
     const lighterShades = generateLightShades("#040f20");
 
-    setLightShades(lighterShades.reverse());
+    setLightShades(lighterShades);
   }, []);
   const generateLightShades = (colorCode: string) => {
     let r = parseInt(colorCode.slice(1, 3), 16);
@@ -133,7 +133,7 @@ export default function Palette() {
 
     const lighterShades = generateLightShades(color);
 
-    setLightShades(lighterShades.reverse());
+    setLightShades(lighterShades);
     setColor1(color);
   };
 
@@ -169,7 +169,7 @@ export default function Palette() {
               w="fit-content"
               margin="auto"
             >
-              {shades.reverse().map((shade, i) => (
+              {shades.map((shade, i) => (
                 <Box
                   key={index}
                   w="120px"
@@ -240,7 +240,7 @@ export default function Palette() {
             onChange={(e) => {
               setColor1(e.target.value);
               const lighterShades = generateLightShades(e.target.value);
-              setLightShades(lighterShades.reverse());
+              setLightShades(lighterShades);
             }}
           />
           <Box fontSize="md" fontWeight="medium" color="brand.900">

@@ -59,6 +59,7 @@ export default function Header({ ...rest }: FlexProps) {
           px="7"
           py={2.5}
           fontWeight="medium"
+          onClick={() => push("/playground")}
           rounded="base"
           h="auto"
           fontSize="md"
