@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import {
   Box,
+  Button,
   Container,
   Divider,
   Flex,
@@ -262,6 +263,32 @@ export default function Palette() {
         >
           <DiceIcon mr="2" h="5" w="5" /> Random
         </Flex>
+        <Button
+          bg="brand.900"
+          color="contrast.200"
+          h="full"
+          py="2"
+          px="5"
+          fontSize="md"
+          onClick={() => {
+            let shades = {
+              shades: lightShades,
+            };
+            const copiedObj = JSON.stringify(shades);
+            console.log(copiedObj);
+
+            navigator.clipboard.writeText(copiedObj);
+            toast({
+              title: "copied to clipboard",
+              variant: "subtle",
+              status: "success",
+              duration: 1000,
+            });
+          }}
+          fontWeight="medium"
+        >
+          Copy
+        </Button>
       </Flex>
       <Flex justify="center" align="center" my="8">
         {lightShades.map((color, index) => (

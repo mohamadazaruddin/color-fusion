@@ -1,7 +1,9 @@
 import { Box, Button, Flex, FlexProps, Heading, Text } from "@chakra-ui/react";
+import { useRouter } from "next/navigation";
 import React from "react";
 
 export default function Banner({ ...rest }: FlexProps) {
+  const { push } = useRouter();
   return (
     <Flex
       px="20"
@@ -37,6 +39,7 @@ export default function Banner({ ...rest }: FlexProps) {
         bg="brand.900"
         color="contrast.200"
         px="14"
+        onClick={() => push("/playground")}
         py={3.5}
         h="auto"
         fontWeight="medium"

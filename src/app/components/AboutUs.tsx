@@ -60,13 +60,13 @@ export default function AboutUs({ ...rest }: FlexProps) {
       <PageTitle label={<>About Us</>} />
       <Flex w="65%" mt="20" bg="contrast.200">
         <Box
-          bgImg="https://atd-blog.s3.us-east-2.amazonaws.com/wp-content/uploads/2022/04/16142811/cool-profile-pictures-for-tiktok-5-678x1024.webp"
+          bgImg="/images/myImg.png"
           bgRepeat="no-repeat"
-          bgSize="100% auto"
+          bgSize="cover"
           bgPos="center"
           w="50%"
         ></Box>
-        <Box h="full" w="50%" textAlign="center" p="40px">
+        <Box h="full" w="50%" textAlign="center" p="80px">
           <Text fontSize="32px" fontWeight="semibold" color="brand.900">
             Hello !
           </Text>

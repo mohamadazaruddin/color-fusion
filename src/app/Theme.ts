@@ -11,5 +11,8 @@ export const theme = extendTheme({
     contrast: {
       200: "#ffffff",
     },
+    red: {
+      500: "#ff1919",
+    },
   },
 });

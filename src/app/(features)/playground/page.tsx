@@ -236,6 +236,23 @@ export default function Playground() {
           py="2"
           px="5"
           fontSize="md"
+          onClick={() => {
+            let shades = {
+              primary: primaryShades,
+              secondary: secondaryShades,
+              tertiary: tertiaryShades,
+            };
+            const copiedObj = JSON.stringify(shades);
+            console.log(copiedObj);
+
+            navigator.clipboard.writeText(copiedObj);
+            toast({
+              title: "copied to clipboard",
+              variant: "subtle",
+              status: "success",
+              duration: 1000,
+            });
+          }}
           fontWeight="medium"
         >
           Copy

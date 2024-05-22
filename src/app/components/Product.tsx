@@ -69,10 +69,16 @@ export default function Product({ ...rest }: FlexProps) {
         }
       />
 
-      <Flex w="full" mt="20">
-        <Box w="50%" pl="20">
+      <Flex w="full" mt="20" align="center">
+        <Box w="40%" pl="20">
           {accordianData.map(({ title, description }, i) => (
-            <Box mb={5} key={`sec-${i}`}>
+            <Box
+              mb={5}
+              key={`sec-${i}`}
+              onMouseEnter={() => {
+                setFirst(i);
+              }}
+            >
               <Box
                 textAlign="left"
                 fontSize={i === first ? "28px" : "20px"}
@@ -96,9 +102,17 @@ export default function Product({ ...rest }: FlexProps) {
           ))}
         </Box>
         <Flex
-          w="50%"
-          h="350px"
-          bgImage={first === 0 ? "/images/appDesign.png" : "/images/bg.png"}
+          w="60%"
+          h="450px"
+          bgImage={
+            first === 0
+              ? "/images/palettemockup.png"
+              : first === 1
+              ? "/images/colo.png"
+              : first === 2
+              ? "/images/play.png"
+              : "/images/share.png"
+          }
           bgSize="cover"
           bgPos="center"
         >

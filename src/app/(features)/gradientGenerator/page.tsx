@@ -1,7 +1,15 @@
 "use client";
 import DiceIcon from "@/app/components/Icons/DiceIcon";
 import { CopyIcon } from "@chakra-ui/icons";
-import { Box, Container, Flex, Input, Text, useToast } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Container,
+  Flex,
+  Input,
+  Text,
+  useToast,
+} from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 
 export default function GradientGenerator() {
@@ -139,6 +147,7 @@ export default function GradientGenerator() {
                     <Input
                       boxShadow="inset rgba(0, 0, 0, 0.11) 0 0 0 1px"
                       type="number"
+                      placeholder="180°"
                       value={gradientDegree}
                       w="100px"
                       onChange={(e) => {
@@ -152,21 +161,33 @@ export default function GradientGenerator() {
                 <Box fontSize="md" fontWeight="medium">
                   Code
                 </Box>
-                <Flex
-                  align="center"
-                  justifyContent="space-between"
-                  fontSize="md"
-                  fontWeight="medium"
-                  bg="#f7eeff"
-                  w="full"
-                  py="2"
-                  px="4"
-                  cursor="pointer"
-                  rounded="base"
-                  onClick={() => copyColorToClipboard(cssCode)}
-                >
-                  <Box> {cssCode}</Box>
-                  <CopyIcon />
+                <Flex gap="4" align="center">
+                  <Flex
+                    align="center"
+                    justifyContent="space-between"
+                    fontSize="md"
+                    fontWeight="medium"
+                    bg="#f7eeff"
+                    w="full"
+                    py="2"
+                    px="4"
+                    cursor="pointer"
+                    rounded="base"
+                  >
+                    <Box> {cssCode}</Box>
+                  </Flex>
+                  <Button
+                    bg="brand.900"
+                    color="contrast.200"
+                    h="full"
+                    py="2"
+                    px="7"
+                    fontSize="md"
+                    onClick={() => copyColorToClipboard(cssCode)}
+                    fontWeight="medium"
+                  >
+                    Copy
+                  </Button>
                 </Flex>
               </Box>
             </Flex>

@@ -14,7 +14,10 @@ export default function Footer() {
     <Box bg="contrast.200" py="10">
       <Flex flexDir="column" align="center">
         <Box fontSize="lg" fontWeight="medium">
-          Made By 🧑‍💻 <Link>Azar</Link>
+          Made By 🧑‍💻{" "}
+          <Link href="https://axar.vercel.app" target="_blank">
+            Azar
+          </Link>
         </Box>
         {/* <Divider orientation="horizontal" w="250px" /> */}
         <Box position="relative" padding="10">
