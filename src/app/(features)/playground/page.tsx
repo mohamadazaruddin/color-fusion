@@ -61,11 +61,12 @@ import React, { useEffect, useState } from "react";
 import { FaStar } from "react-icons/fa";
 import { HiVideoCamera } from "react-icons/hi";
 import { IoIosMail, IoMdHome } from "react-icons/io";
+import { useDebounce } from "use-debounce";
 
 export default function Playground() {
-  const [primaryColor, setPrimaryColor] = useState("#1c1c9b");
-  const [secondaryColor, setSecondaryColor] = useState("#ffffff");
-  const [tertiaryColor, setTertiaryColor] = useState("#111113");
+  const [primaryClr, setPrimaryClr] = useState("#1c1c9b");
+  const [secondaryClr, setSecondaryClr] = useState("#ffffff");
+  const [tertiaryClr, setTertiaryClr] = useState("#111113");
   const [primaryShades, setPrimaryShades] = useState<string[]>([]);
   const [secondaryShades, setSecondaryShades] = useState<string[]>([]);
   const [tertiaryShades, setTertiaryShades] = useState<string[]>([]);
@@ -78,6 +79,23 @@ export default function Playground() {
     setSecondaryShades(generateLightShades(secondaryColor));
     setTertiaryShades(generateLightShades(tertiaryColor));
   }, []);
+  const [primaryColor] = useDebounce(primaryClr, 500);
+  const [secondaryColor] = useDebounce(secondaryClr, 500);
+  const [tertiaryColor] = useDebounce(tertiaryClr, 500);
+
+  useEffect(() => {
+    const lighterShades = generateLightShades(primaryColor);
+    setPrimaryShades(lighterShades);
+  }, [primaryColor]);
+  useEffect(() => {
+    const secondaryColorShade = generateLightShades(secondaryColor);
+    setSecondaryShades(secondaryColorShade);
+  }, [secondaryColor]);
+  useEffect(() => {
+    const lighterShades = generateLightShades(tertiaryColor);
+    setTertiaryShades(lighterShades);
+  }, [tertiaryColor]);
+
   const generateLightShades = (colorCode: string) => {
     let r = parseInt(colorCode.slice(1, 3), 16);
     let g = parseInt(colorCode.slice(3, 5), 16);
@@ -173,9 +191,7 @@ export default function Playground() {
             type="color"
             value={primaryColor}
             onChange={(e) => {
-              setPrimaryColor(e.target.value);
-              const lighterShades = generateLightShades(e.target.value);
-              setPrimaryShades(lighterShades);
+              setPrimaryClr(e.target.value);
             }}
           />
           <Box fontSize="md" fontWeight="medium" color="brand.900">
@@ -196,9 +212,7 @@ export default function Playground() {
             type="color"
             value={secondaryColor}
             onChange={(e) => {
-              setSecondaryColor(e.target.value);
-              const secondaryColorShade = generateLightShades(e.target.value);
-              setSecondaryShades(secondaryColorShade);
+              setSecondaryClr(e.target.value);
             }}
           />
           <Box fontSize="md" fontWeight="medium" color="brand.900">
@@ -219,9 +233,7 @@ export default function Playground() {
             type="color"
             value={tertiaryColor}
             onChange={(e) => {
-              setTertiaryColor(e.target.value);
-              const lighterShades = generateLightShades(e.target.value);
-              setTertiaryShades(lighterShades);
+              setTertiaryClr(e.target.value);
             }}
           />
           <Box fontSize="md" fontWeight="medium" color="brand.900">
