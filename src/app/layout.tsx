@@ -15,6 +15,7 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <title>Color Fusion</title>
+        <link rel="icon" href="/images/favicon.ico" />
       </head>
       <body
         style={{
