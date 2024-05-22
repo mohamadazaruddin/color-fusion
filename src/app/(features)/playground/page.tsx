@@ -79,9 +79,9 @@ export default function Playground() {
     setSecondaryShades(generateLightShades(secondaryColor));
     setTertiaryShades(generateLightShades(tertiaryColor));
   }, []);
-  const [primaryColor] = useDebounce(primaryClr, 500);
-  const [secondaryColor] = useDebounce(secondaryClr, 500);
-  const [tertiaryColor] = useDebounce(tertiaryClr, 500);
+  const [primaryColor] = useDebounce(primaryClr, 300);
+  const [secondaryColor] = useDebounce(secondaryClr, 300);
+  const [tertiaryColor] = useDebounce(tertiaryClr, 300);
 
   useEffect(() => {
     const lighterShades = generateLightShades(primaryColor);
