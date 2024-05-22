@@ -10,7 +10,7 @@ import {
   Flex,
   useToast,
 } from "@chakra-ui/react";
-import React from "react";
+import React, { useState } from "react";
 import * as Yup from "yup";
 import PageTitle from "./PageTitle";
 import { Formik, Form, Field } from "formik";
@@ -27,27 +27,48 @@ const AddCommentSchema = Yup.object().shape({
 
 export default function ContactUs() {
   const toast = useToast();
+  const [isLoading, setIsLoading] = useState(false);
 
-  const handleSubmit = async (values: any) => {
+  const handleSubmit = async (
+    values: { name: string; comment: string; email: any },
+    resetForm: () => void
+  ) => {
+    setIsLoading(true);
     const sendParams = {
       name: values.name,
       email: values.email,
       comment: values.comment,
       location: "red",
     };
-    const response = await ky
-      .post(`/api/comments/add-comments`, { json: sendParams })
-      .json();
-    let responseData = response;
-    if (responseData) {
+
+    try {
+      const response = await ky
+        .post(`/api/comments/add-comments`, { json: sendParams })
+        .json();
+
+      if (response) {
+        toast({
+          description: "Comments Added Successfully",
+          status: "success",
+          isClosable: true,
+          variant: "left-accent",
+          position: "bottom",
+          duration: 4000,
+        });
+
+        resetForm();
+      }
+    } catch (error) {
       toast({
-        description: "Comments Added Succesfully",
-        status: "success",
+        description: "An error occurred. Please try again later.",
+        status: "error",
         isClosable: true,
         variant: "left-accent",
         position: "bottom",
         duration: 4000,
       });
+    } finally {
+      setIsLoading(false);
     }
   };
   return (
@@ -61,8 +82,8 @@ export default function ContactUs() {
             email: "",
           }}
           validationSchema={AddCommentSchema}
-          onSubmit={(values) => {
-            handleSubmit(values);
+          onSubmit={(values, { resetForm }) => {
+            handleSubmit(values, resetForm);
           }}
         >
           {({ errors, touched }) => (
@@ -174,7 +195,9 @@ export default function ContactUs() {
                   px="7"
                   py={2.5}
                   type="submit"
+                  isLoading={isLoading}
                   fontWeight="medium"
+                  loadingText="Submitting"
                   rounded="base"
                   h="auto"
                   fontSize="md"
