@@ -9,10 +9,32 @@ import Product from "../components/Product";
 import AboutUs from "../components/AboutUs";
 import ContactUs from "../components/ContactUs";
 import Footer from "../components/Footer";
+import { useEffect, useState } from "react";
+import ScreenMessage from "../components/ScreenMessage";
 
 export default function Home() {
+  const [showModal, setShowModal] = useState(false);
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 780) {
+        setShowModal(true);
+      } else {
+        setShowModal(false);
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   return (
     <Box pos="relative">
+      {showModal && (
+        <ScreenMessage isOpen={showModal} onClose={() => setShowModal(false)} />
+      )}
       <Image
         src="/images/balls.svg"
         position="absolute"
